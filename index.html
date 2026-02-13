@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AbeLab Portfolio</title>
+  <link rel="stylesheet" href="style.css?v=20260203" />
+</head>
+
+<body>
+  <div class="site-wrapper">
+
+    <!-- =========================
+         Header
+    ========================== -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand-block">
+          <div class="brand-logo">AbeLab</div>
+          <div class="brand-tagline">Excel × Access × AI で、現場の「困った」を解決する。</div>
+        </div>
+
+
+<nav class="main-nav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="rpa.html">RPA</a></li>
+    <li><a href="AI.html">AI</a></li>
+    <li><a href="sales-invoice.html">請求書</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+
+        <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
+      </div>
+
+<nav class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="rpa.html">RPA</a></li>
+    <li><a href="AI.html">AI</a></li>
+    <li><a href="sales-invoice.html">請求書</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+    </header>
+
+    <main>
+      <!-- =========================
+           Hero
+      ========================== -->
+      <section class="hero-section" id="home">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <div class="hero-label">PORTFOLIO</div>
+            <h1 class="hero-title">ようこそ 安部洋子ポートフォリオへ</h1>
+            <p class="hero-lead">
+              現場で起きている「困った」を、Excel / Access / RPA / AI の組み合わせで、
+              できるだけシンプルに、壊れにくく、運用しやすく整えることをテーマにしています。
+              <br><br>
+              🔴「AI開発支援UI」GPTコードをファイルに自動更新
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary-btn" href="#projects">Projectsを見る</a>
+              <a class="btn ghost-btn" href="#about">AbeLabについて</a>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-visual-card">
+              <div class="hero-visual-label">WORKFLOW FIRST</div>
+              <ul class="hero-visual-list">
+                <li>業務フローを整理してから設計</li>
+                <li>入力・確認・保存の負担を減らす</li>
+                <li>運用後の「詰まり」を残さない</li>
+              </ul>
+              <p class="hero-visual-note">まずは「止まらない運用」を最優先します。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+           Projects
+      ========================== -->
+      <section class="projects-section" id="projects">
+        <div class="section-header">
+          <h2 class="section-title">Projects</h2>
+          <p class="section-subtitle">気になるプロジェクトカードをクリックすると、下に詳細が表示されます。</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- 1) BucketBlocks -->
+          <article class="project-card">
+            <div class="project-image-wrapper">
+              <img class="project-image" src="image/1cube.png" alt="ブロック型 ACCESS BucketBlocks" />
+            </div>
+            <h3 class="project-title">ブロック型 ACCESS｜BucketBlocks</h3>
+            <p class="project-tag">データストア / 汎用マスタ</p>
+            <p class="project-summary">
+              「項目が増え続ける」「システム化するほどでもない」現場向けに、
+              テキスト・数値・日付を“バケツ”のように追加できる ACCESS データベースです。
+            </p>
+            <button class="project-detail-button" type="button" data-project-id="bucket">詳細を見る</button>
+          </article>
+
+          <!-- 2) Invoice tool -->
+          <article class="project-card">
+            <div class="project-image-wrapper">
+              <img class="project-image" src="image/2seikyusyoinvoice.png" alt="請求書自動作成ツール" />
+            </div>
+            <h3 class="project-title">請求書自動作成ツール</h3>
+            <p class="project-tag">Excel マクロ / 請求書</p>
+            <p class="project-summary">
+              ACCESS の売上データから、Excel 請求書フォームへ明細を流し込み、
+              PDF出力とログ記録までを一気通貫で行うツールです。
+            </p>
+            <a class="project-detail-button" href="sales-invoice.html#demo">詳細（デモ動画）を見る</a>
+          </article>
+
+          <!-- 3) RPA page link -->
+          <article class="project-card">
+            <div class="project-image-wrapper">
+              <img class="project-image" src="image/3pdftotext.png" alt="PDFテキスト化 RPA" />
+            </div>
+            <h3 class="project-title">PDFテキスト化（RPA）</h3>
+            <p class="project-tag">PDF / テキスト化 / RPA連携</p>
+            <p class="project-summary">
+              PDFをフォルダから自動で読み込み、テキスト化して蓄積・検索・共有へつなぐ仕組みです。
+              詳細はRPAページにまとめます。
+            </p>
+            <a class="project-detail-button" href="rpa.html">RPAページへ</a>
+          </article>
+        </div>
+
+        <!-- 詳細パネル（ここに表示） -->
+        <div class="project-detail-panel" id="projectDetailPanel" hidden>
+          <div class="detail-inner">
+            <h3 class="detail-title" id="detailTitle">プロジェクト詳細</h3>
+            <p class="detail-lead" id="detailLead">カードの「詳細」をクリックすると、ここに内容が表示されます。</p>
+
+            <div class="detail-media" id="detailMedia"></div>
+
+            <div class="detail-content" id="detailContent">
+              まだプロジェクトが選択されていません。
+            </div>
+
+            <button class="detail-close-button" id="detailCloseButton" type="button">Projects に戻る</button>
+          </div>
+        </div>
+      </section>
+      <section class="ai-ui-section" id="ai-ui">
+    <div class="ai-ui-container" style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+        <div class="section-header">
+            <h2>AI開発支援UI：GPTコードをファイルに自動反映</h2>
+        </div>
+
+        <div class="ai-ui-wrap" style="display: flex; flex-direction: column; gap: 24px;">
+            <div class="ai-ui-row" style="display: flex; align-items: flex-start; gap: 24px;">
+                <div class="ai-ui-images" style="max-width: 520px; flex: 0 0 auto;">
+                    <div class="ai-ui-image-card" style="width: 100%; max-width: 560px;">
+                    <h3 style="font-size: 26px; margin: 0 0 10px;">更新UI（バックアップ＋上書き結果の表示）</h3>
+                    <img src="image/cordhenko.png" alt="コード変更UI" style="width: 100%; max-width: 560px; height: auto; display: block; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); margin: 0 auto;">
+                </div>
+                </div>
+                <div class="ai-ui-text" style="flex: 1 1 420px; min-width: 300px;">
+                <p>「作る」だけでなく「壊さずに運用する」ための、更新フローをUI化しています。GPTの出力をそのままローカルファイルへ反映する前に、バックアップ＋安全な上書きをセットで行い、「更新が怖い」を減らします。</p>
+
+                <ul>
+                    <li>全文差し替え（丸ごと更新）</li>
+                    <li>セクション差し替え（START/END間だけ更新）</li>
+                    <li>バックアップ＋連番で安全に上書き（更新事故を最小化）</li>
+                </ul>
+
+                <p>指示プロンプト作成シートは、依頼の型を固定してAI出力のブレを抑え、レビューしやすくします。</p>
+                <ul>
+                    <li>目的/対象/現状/変更後/素材/確認 を1シートに整理</li>
+                    <li>対象ファイル選択の導線（index.html / AI.html など）</li>
+                    <li>貼り付け後の確認ポイントまで一気通貫</li>
+                </ul>
+
+                <h4 style="margin-top: 18px;">今後の拡張（検討中）</h4>
+                <ul>
+                    <li>GPTs Actions 経由の直接書き出し：ローカルAPIやクラウドストレージAPI連携で「保存→Excelボタン」工程まで統合</li>
+                    <li>diff（差分）確認の自動化：更新前後の差分をテキスト出力し、「何が変わったか」を後から高速に検証</li>
+                </ul>
+            </div>
+            </div>
+
+            <div class="ai-ui-row" style="display: flex; align-items: flex-start; gap: 24px;">
+                <div class="ai-ui-images" style="max-width: 520px; flex: 0 0 auto;">
+                    <div class="ai-ui-image-card" style="width: 100%; max-width: 560px;">
+                    <h3 style="font-size: 26px; margin: 0 0 10px;">指示プロンプト作成シート（目的→対象→現状→変更後→素材→確認）</h3>
+                    <img src="image/pronptsakusei.png" alt="指示プロンプト作成シート" style="width: 100%; max-width: 560px; height: auto; display: block; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); margin: 0 auto;">
+                </div>
+                </div>
+                <div class="ai-ui-side" style="flex: 1; min-width: 260px; display: flex; justify-content: center; align-items: flex-start;">
+                    <div class="ai-ui-image-card" style="width: 100%; max-width: 320px;">
+                    <h3 style="font-size: 26px; margin: 0 0 10px;">YouTube（操作手順の配信）</h3>
+                    <img src="image/youtube.png" alt="YouTube" style="width: 60%; max-width: 320px; height: auto; display: block; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); margin: 0 auto;">
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+      <!-- =========================
+           About
+      ========================== -->
+<!-- About -->
+<section class="about-section" id="about">
+  <div class="section-header">
+    <h2 class="section-title">About AbeLab</h2>
+    <p class="section-subtitle">現場で使える“止まらない”仕組みを、わかりやすく。</p>
+  </div>
+
+  <div class="about-layout">
+    <!-- text (left / wide) -->
+<div class="about-text">
+ <p>
+  AbeLab は、既存システムと連携しながら、Excel／Access／VBA／RPA（Power Automate）などを組み合わせて、
+  「入力を減らす」「ミスを減らす」「止まらない」業務フローをつくります。
+</p>
+
+  <p>
+    まず“人がやっている手順”を尊重し、壊さずに改善します。
+    その上で、ログ・検証・例外処理まで含めて、翌月も回る仕組みへ整えます。
+  </p>
+
+  <!-- ★追加：2行ぶん（FOCUSの底辺合わせ用） -->
+  <p>
+    小さく始めて、現場に合わせて育てます。<br>
+    “作って終わり”ではなく、運用が続く形に仕上げます。
+  </p>
+</div>
+
+
+    <!-- focus (right) -->
+    <aside class="about-side" aria-label="AbeLab focus">
+      <div class="about-card">
+        <h3>FOCUS</h3>
+        <ul>
+          <li>Excel / Access / VBA の業務改善</li>
+          <li>RPA（Power Automate）連携</li>
+          <li>ログ・検証で“止まらない”運用</li>
+        </ul>
+        <p class="about-note">現場の負担を減らし、再現性を高める設計を大切にしています。</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+      <!-- =========================
+           Contact
+      ========================== -->
+      <section class="contact-section" id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-subtitle">お仕事のご相談・ご連絡はこちらから。</p>
+        </div>
+
+        <div class="contact-content">
+          <p>
+            
+          </p>
+          <ul class="contact-links">
+            <li>LinkedIn: www.linkedin.com/in/yokoabe-lab</li>
+            <li>googleｻｲﾄﾎﾟｰﾄﾌｫﾘｵ：https://sites.google.com/view/yokoabe-portfolio2/%E3%83%9B%E3%83%BC%E3%83%A0</li>
+            <li>Email:yo3870ko0206@gmil.com</li>
+          </ul>
+          <p class="contact-note">※公開用に整える段階で、記載情報を整理していきます。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p class="footer-copy">© AbeLab Portfolio</p>
+    </footer>
+
+    <button class="scroll-top-button" id="scrollTopButton" aria-label="ページ上部へ">↑</button>
+  </div>
+
+  <script>
+    // ============================
+    // 1) モバイルナビ
+    // ============================
+    (function () {
+      const navToggle = document.getElementById('navToggle');
+      const mobileNav = document.getElementById('mobileNav');
+
+      if (!navToggle || !mobileNav) return;
+
+      const setOpen = (open) => {
+        navToggle.setAttribute('aria-expanded', String(open));
+        mobileNav.hidden = !open;
+      };
+
+      setOpen(false);
+
+      navToggle.addEventListener('click', () => {
+        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+        setOpen(!isOpen);
+      });
+
+      mobileNav.addEventListener('click', (e) => {
+        if (e.target && e.target.closest('a')) {
+          setOpen(false);
+        }
+      });
+    })();
+
+    // ============================
+    // 2) スクロールトップ
+    // ============================
+    (function () {
+      const btn = document.getElementById('scrollTopButton');
+      if (!btn) return;
+
+      const onScroll = () => {
+        btn.style.display = window.scrollY > 600 ? 'flex' : 'none';
+      };
+
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    // ============================
+    // 3) Projects 詳細表示
+    //    - 1) BucketBlocks
+    //    - 2) 請求書（デモ動画埋め込み）
+    //    - 3) PDFテキスト化は別ページへ（カード内リンク）
+    // ============================
+    (function () {
+      const panel = document.getElementById('projectDetailPanel');
+      const title = document.getElementById('detailTitle');
+      const lead = document.getElementById('detailLead');
+      const media = document.getElementById('detailMedia');
+      const content = document.getElementById('detailContent');
+      const closeBtn = document.getElementById('detailCloseButton');
+
+      if (!panel || !title || !lead || !media || !content || !closeBtn) return;
+
+      const projects = {
+        bucket: {
+          title: 'ブロック型 ACCESS｜BucketBlocks',
+          lead: '「項目が増え続ける」を吸収する、現場向けのバケット型データベース。',
+          mediaHtml: '',
+          contentHtml: `
+            <ul>
+              <li>用途：汎用マスタ／履歴／メモなど、項目が増えがちなデータを“追加型”で管理</li>
+              <li>特徴：テキスト・数値・日付などをブロックとして後付けできる</li>
+              <li>狙い：システム化の前段で、現場の情報を散らさず貯める</li>
+            </ul>
+          `.trim()
+        }
+      };
+
+      const openPanel = (projectId) => {
+        const p = projects[projectId];
+        if (!p) return;
+
+        title.textContent = p.title;
+        lead.textContent = p.lead;
+        media.innerHTML = p.mediaHtml;
+        content.innerHTML = p.contentHtml;
+
+        panel.hidden = false;
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+
+      const closePanel = () => {
+        panel.hidden = true;
+        title.textContent = 'プロジェクト詳細';
+        lead.textContent = 'カードの「詳細」をクリックすると、ここに内容が表示されます。';
+        media.innerHTML = '';
+        content.textContent = 'まだプロジェクトが選択されていません。';
+      };
+
+      document.addEventListener('click', (e) => {
+        const btn = e.target && e.target.closest('[data-project-id]');
+        if (!btn) return;
+
+        const projectId = btn.getAttribute('data-project-id');
+        openPanel(projectId);
+      });
+
+      closeBtn.addEventListener('click', closePanel);
+    })();
+  </script>
+</body>
+
+</html>

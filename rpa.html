@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="ja">
+<!-- [1] HEAD START -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AbeLab Portfolio | RPA</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- RPAページ専用（このページだけに効く） -->
+  <style>
+    .rpa-hero-note {
+      margin-top: 0.6rem;
+      color: #e0f2fe;
+      font-size: 1.02rem;
+      line-height: 1.8;
+      max-width: 60ch;
+    }
+
+    .rpa-section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.8rem 1.2rem 2.2rem;
+    }
+
+    .rpa-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+      align-items: stretch;
+    }
+
+    .rpa-card {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 18px;
+      padding: 1.2rem 1.2rem 1.1rem;
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.08);
+    }
+
+    .rpa-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.25rem;
+      line-height: 1.35;
+    }
+
+    .rpa-kicker {
+      display: inline-flex;
+      gap: 0.4rem;
+      align-items: center;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      background: rgba(37, 99, 235, 0.08);
+      color: #1d4ed8;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+
+    .rpa-desc {
+      margin: 0.35rem 0 0.9rem;
+      color: #334155;
+      line-height: 1.85;
+    }
+
+    /* 図解（フロー） */
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      align-items: center;
+      margin: 0.9rem 0 0.8rem;
+      padding: 0.85rem;
+      border-radius: 14px;
+      background: rgba(2, 6, 23, 0.03);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .flow-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.52rem 0.75rem;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      box-shadow: 0 10px 20px rgba(2, 6, 23, 0.05);
+      font-size: 0.92rem;
+      white-space: nowrap;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .flow-icon {
+      width: 1.4rem;
+      height: 1.4rem;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.20);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      font-size: 1.02rem;
+    }
+
+    .flow-arrow {
+      opacity: 0.65;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .rpa-list {
+      margin: 0.6rem 0 0;
+      padding-left: 1.1rem;
+      color: #0f172a;
+      line-height: 1.9;
+    }
+
+    .rpa-subgrid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .rpa-mini {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+      box-shadow: 0 14px 30px rgba(2, 6, 23, 0.06);
+    }
+
+    .rpa-mini h4 {
+      margin: 0 0 0.35rem;
+      font-size: 1.02rem;
+    }
+
+    .rpa-mini p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.75;
+      font-size: 1.02rem;
+    }
+
+    .rpa-cta {
+      margin-top: 1.4rem;
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 980px) {
+      .rpa-grid { grid-template-columns: 1fr; }
+      .rpa-subgrid { grid-template-columns: 1fr; }
+      .flow-step { white-space: normal; }
+    }
+  
+/* =========================
+   RPA cases (rpa.html)
+   ========================= */
+.rpa-titleline{
+  /* 旧レイアウト（ロゴ小）用。今は未使用だが残しておく */
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  margin-bottom: 18px;
+}
+.pa-logo{
+  /* 旧ロゴ（小） */
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+/* ★新：見出し上に大きめロゴ（マークの重複表示を防ぎ、見た目をスッキリ） */
+.rpa-head{
+  text-align: left;
+  margin-bottom: 18px;
+}
+.pa-hero-logo{
+  display:block;
+  width: min(360px, 88%);
+  height: auto;
+  margin: 0 0 14px;
+}
+
+.rpa-title{
+  margin: 0;
+  font-size: 1.55rem;
+}
+.rpa-lead{
+  margin: .25rem 0 0;
+  color:#334155;
+  font-size: 1.05rem;
+}
+.em{ font-weight: 700; color:#0b3a6d; }
+.em-red{ font-weight: 700; color:#c40000; }
+
+.case-title{
+  margin: 0 0 .25rem;
+  font-size: 1.28rem;
+}
+.case-note{
+  margin: 0 0 14px;
+  color:#475569;
+  font-size: 1.0rem;
+}
+
+.case-grid{
+  display:grid;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+.case-media{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+.case-img{
+  width: 100%;
+  max-width: 336px !important;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.10);
+}
+
+.case-bullets{
+  margin: 0;
+  padding-left: 1.1rem;
+  color:#0f172a;
+  font-size: 1.05rem;
+}
+.case-bullets li{ margin: 0 0 .7rem; }
+.case-bullets li.note{
+  margin-top: .6rem;
+  color: #334155;
+  font-size: inherit; /* 他の箇条書きと同じサイズに */
+}
+
+.case-bullets li::marker{
+  font-size: 1.15em; /* 『・/●』を少し大きく */
+}
+.asset-note{
+  margin: 18px 0 0;
+  color:#64748b;
+  font-size: 0.95rem;
+}
+
+/* レスポンシブ（2カラム→1カラム） */
+@media (max-width: 980px){
+  .case-grid{ grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<!-- [1] HEAD END -->
+
+<body>
+  <div class="site-wrapper">
+
+    <!-- Header（index.htmlと同じ） -->
+    <!-- [2] SITE_HEADER START -->
+<header class="site-header" id="top">
+      <div class="header-inner">
+        <div class="brand-block">
+          <div class="brand-logo">AbeLab</div>
+          <div class="brand-tagline">Excel × Access × AI で、現場の「困った」を解決する。</div>
+        </div>
+
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+         <li><a href="index.html">Home</a></li>
+          <li><a href="rpa.html">RPA</a></li>
+          <li><a href="AI.html">AI</a></li>
+          <li><a href="sales-invoice.html">請求書</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
+      </div>
+
+      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile" hidden>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rpa.html">RPA</a></li>
+          <li><a href="AI.html">AI</a></li>
+          <li><a href="sales-invoice.html">請求書</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+<!-- [2] SITE_HEADER END -->
+
+    <main>
+
+      <!-- Hero -->
+      <!-- [3] HERO_SECTION START -->
+<!-- [4] MAIN_SECTION START -->
+<section class="hero-section">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <div class="hero-label">RPA PAGE</div>
+            <h1 class="hero-title">RPA（自動化）｜止まらない運用の作り方</h1>
+            <p class="hero-lead">
+              「手作業をなくす」だけで終わらず、<br>
+              ログ・検証・例外処理まで含めて“翌月も回る”自動化に整えます。
+            </p>
+            <p class="rpa-hero-note">
+              ここでは、AbeLab のRPAの代表例として、<br>
+              <b>① Web登録＋メール送信</b> / <b>② 見積→請求→PDF→確認→メール</b> の2本を、図解で紹介します。
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary-btn" href="index.html#projects">Projects に戻る</a>
+              <a class="btn ghost-btn" href="index.html#contact">相談する</a>
+            </div>
+          </div>
+
+          <div class="hero-card" role="note" aria-label="RPA design">
+            <h2>止まらないRPAの基本</h2>
+            <ul>
+              <li>入力は “最小” に、選択・貼付けで回す</li>
+              <li>例外（エラー）を “想定内” にする</li>
+              <li>ログで「原因」と「再実行」を簡単に</li>
+            </ul>
+            <p class="hero-card-foot">
+              自動化は派手さより、継続運用が勝ちます。
+            </p>
+          </div>
+        </div>
+      </section>
+<!-- [4] MAIN_SECTION END -->
+<!-- [3] HERO_SECTION END -->
+
+      <!-- 2つの自動化 -->
+      <section class="rpa-section" aria-label="RPA examples">
+  <div class="container">
+    <div class="rpa-head">
+      <!-- ★ロゴを見出しの上へ（小さなマークが2重に見えないように） -->
+      <img class="pa-hero-logo" src="image/powerautomate.png" alt="Power Automate">
+      <h1 class="rpa-title">RPAの代表例（2本）</h1>
+      <p class="rpa-lead">
+        Power Automate を中心に、既存の Excel / Access / 既存システム資産と組み合わせて、
+        <span class="em">「速く・安全で・止まらない業務フロー」</span>を構築します。
+      </p>
+    </div>
+
+    <!-- ① 見積書 → 売上入力 -->
+    <article class="rpa-case">
+      <h2 class="case-title">① 見積書 → 売上入力 → 請求書 → PDF → 確認 → 送信</h2>
+      <p class="case-note">※人の判断が必要な確認工程のみを残し、それ以外は自動処理します。</p>
+
+      <div class="case-grid">
+        <div class="case-media">
+          <img class="case-img" src="image/mirumorijidou_rpa.png" alt="見積→売上→請求→PDF→確認→送信（RPAフロー図）">
+        </div>
+
+        <div class="case-body">
+          <ul class="case-bullets">
+  <li>Microsoft Power Automate を基盤に、「人の確認工程」を意図的に残して、現場が安心して使い続けられる自動化を実現します。</li>
+  <li>新システム導入についても、関連する業務を自動化します。ご相談ください。</li>
+  <li><strong>重要なのは、見積書入力を起点に「極力入力しない」業務設計を行うことです。</strong></li>
+  <li><span class="em-red">システムからの見積入力→売上入力に移行で自動化できていない職場にも、RPAで自動化できます。</span></li>
+  <li>見積書データを起点に、売上入力・請求書発行・PDF化・メール送信までを一連で自動化。途中に 人の確認（OK/NG） を挟み、「速さ」と「安全性」を両立します。</li>
+  <li class="note">※ 自動化の目的は「RPAを使うこと」ではありません。業務が安定して回るなら、システム側の自動処理や移行機能を優先することもあります。AbeLabでは、最適な手段を選ぶことを最優先に設計します。</li>
+</ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- [7] RPA CASE 2 START -->
+    <!-- ② 支店メール受信～添付保存～集計～登録～返信 -->
+    <article class="rpa-case">
+      <h2 class="case-title">② 支店からのメール受信 → 添付保存 → 集計 → システム登録 → 返信</h2>
+      <p class="case-note">メール起点で「受信→保存→確認→集計→登録→返信」を一連で自動化します。（※内容は守秘義務のため一般化）</p>
+
+      <div class="case-grid">
+        <div class="case-media">
+          <img class="case-img" src="image/4RPAPDF3.png" alt="受信→保存→集計→登録→返信（RPAフロー図）">
+        </div>
+
+        <div class="case-body">
+          <ul class="case-bullets">
+  <li><strong>（人）</strong> Gmailを受信し、対象メールがどれか最低限の内容を確認します。</li>
+  <li><strong>（PA）</strong> 対象メールを取得し、「連番＋現場名」のフォルダを自動作成 → 添付ファイルを一括保存します。</li>
+  <li><strong>（人）</strong> 添付ファイルを開き、レイアウト（崩れ・欠け）がないか確認のみ行います。</li>
+  <li><strong>（PA）</strong> 確認済みファイルをPDFに一括変換し、保存ルールに沿って整理します。</li>
+  <li><strong>（PA）</strong> フォルダ内ファイルを一括集計し、総括表を自動作成します。</li>
+  <li><strong>（PAD/RPA）</strong> CMSへログイン → 項目入力 → PDFアップロードまで自動化します。</li>
+  <li><strong>（人）</strong> 最終確認（目視）を継続します。</li>
+  <li><strong>（PA）</strong> 受付番号・日時・担当者名を自動で記録し、定型文＋差し込みで返信メールを自動送信します。</li>
+  <li class="note">※ 効果：送信漏れ／添付ミスをログとチェック管理表で抑止。担当者交代があっても運用が止まりません。</li>
+</ul>
+        </div>
+      </div>
+    </article>
+    <!-- [7] RPA CASE 2 END -->
+
+    <p class="asset-note">
+      ※ 画像ファイルは、同階層の <code>image</code> フォルダに配置してください：<br>
+      <code>image/mirumorijidou_rpa.png</code> ／ <code>image/4RPAPDF3.png</code> ／ <code>image/powerautomate.png</code>
+    </p>
+  </div>
+</section>
+
+    </main>
+
+    <!-- [5] FOOTER START -->
+<footer class="site-footer">
+      <p class="footer-copy">© AbeLab Portfolio</p>
+    </footer>
+<!-- [5] FOOTER END -->
+
+    <button class="scroll-top-button" id="scrollTopButton" aria-label="Scroll to top">↑</button>
+  </div>
+
+  <!-- [6] SCRIPTS START -->
+<script>
+    // -----------------------------
+    // Mobile nav toggle
+    // -----------------------------
+    const navToggle = document.getElementById("navToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    navToggle?.addEventListener("click", () => {
+      const isOpen = !mobileNav.hasAttribute("hidden");
+      if (isOpen) {
+        mobileNav.setAttribute("hidden", "");
+        navToggle.setAttribute("aria-expanded", "false");
+      } else {
+        mobileNav.removeAttribute("hidden");
+        navToggle.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    mobileNav?.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        mobileNav.setAttribute("hidden", "");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // -----------------------------
+    // Scroll top
+    // -----------------------------
+    const scrollTopButton = document.getElementById("scrollTopButton");
+    const toggleScrollButton = () => {
+      if (!scrollTopButton) return;
+      if (window.scrollY > 500) {
+        scrollTopButton.style.display = "inline-flex";
+      } else {
+        scrollTopButton.style.display = "none";
+      }
+    };
+    window.addEventListener("scroll", toggleScrollButton);
+    toggleScrollButton();
+
+    scrollTopButton?.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+<!-- [6] SCRIPTS END --></body>
+</html>

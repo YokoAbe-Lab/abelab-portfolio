@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="ja">
+<!-- [1] HEAD START -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AbeLab Portfolio | 販売管理（請求書編）</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- このページ専用（最小限） -->
+  <style>
+    .inv-note{
+      margin: 0.8rem 0 0;
+      color: #e0f2fe;
+      font-size: 1.12rem;
+      line-height: 1.85;
+      max-width: 62ch;
+    }
+
+    .inv-section{
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.9rem 1.2rem 2.3rem;
+    }
+
+    /* Demo section alignment (same left margin as .inv-section) */
+    .glossary-section{
+      max-width:1120px;
+      margin:0 auto;
+      padding:1.9rem 1.2rem 2.3rem;
+    }
+
+
+    .inv-grid{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .inv-card{
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 18px;
+      padding: 1.15rem 1.15rem 1.05rem;
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.08);
+    }
+
+    .inv-kicker{
+      display: inline-flex;
+      gap: 0.45rem;
+      align-items: center;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      background: rgba(37, 99, 235, 0.08);
+      color: #1d4ed8;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+    }
+
+    .inv-card h3{
+      margin: 0 0 0.4rem;
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+    .inv-card p{
+      margin: 0;
+      color: #334155;
+      line-height: 1.85;
+      font-size: 1.02rem;
+    }
+
+    /* フロー（RPAページの見た目と寄せる） */
+    .flow{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      align-items: center;
+      margin: 1rem 0 0.8rem;
+      padding: 0.95rem;
+      border-radius: 14px;
+      background: rgba(2, 6, 23, 0.03);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+    .flow-step{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      box-shadow: 0 10px 20px rgba(2, 6, 23, 0.05);
+      font-size: 0.98rem;
+      white-space: nowrap;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .flow-icon{
+      width: 1.5rem;
+      height: 1.5rem;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.20);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      font-size: 1.06rem;
+    }
+    .flow-arrow{
+      opacity: 0.65;
+      font-weight: 800;
+      color: #334155;
+    }
+
+    /* 画像（大きすぎ防止＋ホバー） */
+    .inv-media{
+      margin-top: 1.1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .inv-figure{
+      width: 100%;
+      max-width: 920px;
+      margin: 0;
+    }
+    .inv-img{
+      width: 100%;
+      max-width: 920px;
+      height: auto;
+      max-height: 70vh;
+      border-radius: 14px;
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      box-shadow: 0 10px 24px rgba(11, 58, 109, 0.18);
+      background: #ffffff;
+      transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+    }
+    .inv-img:hover{
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 18px 34px rgba(2, 6, 23, 0.18);
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .inv-asset-note{
+      margin: 0.9rem auto 0;
+      max-width: 920px;
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .inv-placeholder{
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      border: 1px dashed rgba(37, 99, 235, 0.45);
+      background: rgba(37, 99, 235, 0.06);
+      display: grid;
+      place-items: center;
+      padding: 1.2rem;
+      color: #0f172a;
+      font-weight: 800;
+      line-height: 1.75;
+      box-shadow: 0 10px 24px rgba(11, 58, 109, 0.12);
+    }
+
+    .inv-list{
+      margin: 0.8rem 0 0;
+      padding-left: 1.1rem;
+      color: #0f172a;
+      line-height: 1.9;
+      font-size: 1.02rem;
+    }
+    .inv-list li{ margin: 0 0 0.55rem; }
+
+    .inv-callout{
+      margin-top: 1.25rem;
+      padding: 1.05rem 1.15rem;
+      border-radius: 16px;
+      border: 1px solid rgba(37, 99, 235, 0.22);
+      background: rgba(37, 99, 235, 0.06);
+      color: #0f172a;
+    }
+    .inv-callout h3{ margin: 0 0 0.4rem; font-size: 1.15rem; }
+    .inv-callout p{ margin: 0; color:#334155; line-height: 1.85; font-size: 1.02rem; }
+
+    .inv-cta{
+      margin-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+    }
+
+    @media (max-width: 980px){
+      .inv-grid{ grid-template-columns: 1fr; }
+      .flow-step{ white-space: normal; }
+    }
+  
+
+    .demo-caption{
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+</style>
+</head>
+<!-- [1] HEAD END -->
+
+<body>
+  <div class="site-wrapper">
+
+    <!-- [2] SITE_HEADER START -->
+<header class="site-header" id="top">
+      <div class="header-inner">
+        <div class="brand-block">
+          <div class="brand-logo">AbeLab</div>
+          <div class="brand-tagline">Excel × Access × AI で、現場の「困った」を解決する。</div>
+        </div>
+
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="rpa.html">RPA</a></li>
+            <li><a href="AI.html">AI</a></li>
+            <li><a href="sales-invoice.html">請求書</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
+      </div>
+
+      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile" hidden>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="rpa.html">RPA</a></li>
+          <li><a href="AI.html">AI</a></li>
+          <li><a href="sales-invoice.html">請求書</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+<!-- [2] SITE_HEADER END -->
+
+    <main>
+
+      <!-- Hero -->
+      <!-- [3] HERO_SECTION START -->
+<section class="hero-section">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <div class="hero-label">SALES SYSTEM / INVOICE</div>
+            <h1 class="hero-title">販売管理システム（請求書編）｜Excel VBA × Access</h1>
+            <p class="hero-lead">
+              請求書は「作る」より、<b>止めないで回し続ける</b>のが難しい。<br>
+              AbeLabは、<b>ログ＋チェック管理表</b>で運用を固定し、担当交代しても崩れない形にします。
+            </p>
+            <p class="inv-note">
+              <b>「EXCEL VBAはログで永遠不滅」</b>──これは言いすぎじゃなくて、<br>
+              <b>「いつ・誰が・何をしたか」</b>が残るから、修正・引継ぎ・再実行ができる、という意味です。
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary-btn" href="index.html#projects">Projects に戻る</a>
+              <a class="btn ghost-btn" href="index.html#contact">相談する</a>
+            </div>
+          </div>
+
+          <div class="hero-card" role="note" aria-label="Invoice design">
+            <h2>このページで伝えたいこと</h2>
+            <ul>
+              <li>入力を減らし、ミスを減らす（起点は見積）</li>
+              <li>例外は「想定内」にする（止めない設計）</li>
+              <li>ログで追える（再実行・改善が簡単）</li>
+            </ul>
+            <p class="hero-card-foot">“なんでもできる”は、設計で現実になります。</p>
+          </div>
+        </div>
+      </section>
+<!-- [3] HERO_SECTION END -->
+
+      <!-- 概要 -->
+      <!-- [4] INV_SECTION START -->
+<section class="inv-section" aria-label="Invoice overview">
+        <div class="section-header">
+          <h2 class="section-title">請求書処理を「止まらない」形にする</h2>
+          <p class="section-subtitle">派手な自動化より、翌月も同じ品質で回る運用設計が価値になります。</p>
+        </div>
+
+        <div class="inv-grid">
+          <article class="inv-card">
+            <span class="inv-kicker">🧾 入力を減らす</span>
+            <h3>起点は「見積」</h3>
+            <p>見積データを基準にして、売上入力・請求書発行を連動。二重入力の時間と、転記ミスを減らします。</p>
+          </article>
+
+          <article class="inv-card">
+            <span class="inv-kicker">🧭 例外を想定内に</span>
+            <h3>OK/NG の確認だけ残す</h3>
+            <p>現場に必要な「判断」だけを残し、それ以外は自動処理。速さと安全性の両立ができます。</p>
+          </article>
+
+          <article class="inv-card">
+            <span class="inv-kicker">🧾 ログで永続運用</span>
+            <h3>担当交代しても回る</h3>
+            <p>ログとチェック管理表で「実行結果」を残すことで、再実行・原因特定・引継ぎが容易になります。</p>
+          </article>
+        </div>
+
+        <div class="inv-callout">
+          <h3>一気通貫フロー（例）</h3>
+          <p>見積〜請求〜PDF〜メール送信を、1本の運用としてつなげます（途中の確認は残す）。</p>
+          <div class="flow" aria-label="Invoice flow">
+            <span class="flow-step"><span class="flow-icon">🟦</span>見積</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-icon">🟩</span>売上</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-icon">🧾</span>請求書</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-icon">📄</span>PDF</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-icon">✅</span>確認</span>
+            <span class="flow-arrow">→</span>
+            <span class="flow-step"><span class="flow-icon">✉️</span>メール送信</span>
+          </div>
+        </div>
+      </section>
+<!-- [4] INV_SECTION END -->
+
+      <!-- できること -->
+      <!-- [5] WORKFLOW_SECTION START -->
+<section class="workflow-section" aria-label="Capabilities">
+        <div class="section-header">
+          <h2 class="section-title">「なんでもできる」は、こういう意味です</h2>
+          <p class="section-subtitle">Excel VBA は、現場に残っている“手作業の島”をつなげられます。</p>
+        </div>
+
+        <div class="inv-section" style="padding-top:0;">
+          <ul class="inv-list">
+            <li><b>フォーマット出力：</b> 請求書・見積書・納品書・請求一覧・入金予定・チェック帳票など（既存フォーマットに合わせて作成）</li>
+            <li><b>PDF化：</b> ルール命名（番号_社名.pdf など）で自動保存、履歴が残る</li>
+            <li><b>メール送信：</b> 件名・本文・添付・送信先を自動組み立て（送信漏れ・添付ミスを減らす）</li>
+            <li><b>ログ＋チェック管理表：</b> 実行結果の可視化／再実行の判断ができる</li>
+            <li><b>Access／SQL連携：</b> 集計・抽出・台帳化を「データ側」で整え、Excelは出力と運用に集中</li>
+          </ul>
+
+          <div class="inv-cta">
+            <a class="btn primary-btn" href="rpa.html">RPAページを見る</a>
+            <a class="btn ghost-btn" href="AI.html">AIページを見る</a>
+          </div>
+        </div>
+      </section>
+<!-- [5] WORKFLOW_SECTION END -->
+
+      <!-- デモ枠 -->
+      <!-- [6] DEMO_SECTION START -->
+<section id="demo" class="glossary-section" aria-label="Demo">
+        <h2 class="section-title">デモ：Excel請求書自動化（繰り返し出力 → PDF保存 → ログ記録）</h2>
+        <p class="section-subtitle">
+          Accessでも同様に作れますが、あえて<strong>Excelで表現</strong>しています。理由は、ベースとなる「請求書フォーマットシート」を差し替えるだけで、見積・納品書・各種提出書類など<strong>さまざまな帳票に横展開</strong>できるからです。<br>
+          Accessで抽出した売上データをExcelへ貼り付け、請求書シートを<strong>連番で自動作成</strong>→PDF保存まで一気通貫。<br>
+          <span style="font-weight:900; font-size:1.35em;">⏱️ スローモーション見える化（待ち時間入り）で、処理の流れを“目で追える”ようにしています。</span><br>
+          ログは「処理前チェック」「請求書生成」「PDF化」の<strong>3種類</strong>。請求書生成／PDF化はステップ番号（連番）付きで、<strong>どこまで進んだか／どこで止まったか</strong>が一目で追えます。<br>
+          つまりこの仕組みで、請求書に限らず<strong>何でも自動発行</strong>が可能です。
+        </p>
+
+        <div class="glossary-card">
+          <div class="demo-wrap">
+            <p class="demo-caption">デモ動画（待ち時間入り／スローモーション）</p>
+
+            <!-- ▼ デモ動画（mp4） -->
+            <div class="detail-media">
+              <a class="detail-video" href="image/invoice-form-demo.mp4" target="_blank" rel="noopener">
+                ▶ デモ動画を見る（MP4）
+              </a>
+            </div>
+
+            <!-- ▼ 任意：サムネ画像を置く場合はコメントアウトを外して使えます -->
+            <!--
+            <img class="demo-image" src="image/invoice_demo.png" alt="デモ画像" />
+            -->
+          </div>
+        </div>
+      </section>
+<!-- [6] DEMO_SECTION END -->
+
+    </main>
+
+    <!-- [7] FOOTER START -->
+<footer class="site-footer">
+      <p class="footer-copy">© AbeLab Portfolio</p>
+    </footer>
+<!-- [7] FOOTER END -->
+
+    <button class="scroll-top-button" id="scrollTopButton" aria-label="Scroll to top">↑</button>
+  </div>
+
+  <!-- [8] SCRIPTS START -->
+<script>
+    // -----------------------------
+    // Mobile nav toggle
+    // -----------------------------
+    const navToggle = document.getElementById("navToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    navToggle?.addEventListener("click", () => {
+      const isOpen = !mobileNav.hasAttribute("hidden");
+      if (isOpen) {
+        mobileNav.setAttribute("hidden", "");
+        navToggle.setAttribute("aria-expanded", "false");
+      } else {
+        mobileNav.removeAttribute("hidden");
+        navToggle.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    mobileNav?.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        mobileNav.setAttribute("hidden", "");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // -----------------------------
+    // Scroll top
+    // -----------------------------
+    const scrollTopButton = document.getElementById("scrollTopButton");
+    const toggleScrollButton = () => {
+      if (!scrollTopButton) return;
+      if (window.scrollY > 500) {
+        scrollTopButton.style.display = "inline-flex";
+      } else {
+        scrollTopButton.style.display = "none";
+      }
+    };
+    window.addEventListener("scroll", toggleScrollButton);
+    toggleScrollButton();
+
+    scrollTopButton?.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+<!-- [8] SCRIPTS END --></body>
+</html>

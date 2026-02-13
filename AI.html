@@ -1,0 +1,791 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<!-- [1] HEAD START -->
+<head>
+  <meta charset="UTF-8">
+  <title>AI学習ページ｜高速推論 × Context Engineering 2.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* AI 図解のサイズ制御（縦長画像でも“異常に大きく”ならないように） */
+    .ai-figure { max-width: 1120px; margin: 0 auto 2.0rem; }
+    .ai-figure h3 { margin: 0 0 0.6rem; }
+    .ai-figure-media { max-width: 980px; margin: 0 auto; }
+    .ai-figure-link { display: flex; justify-content: center; align-items: center; }
+    .ai-figure-img{
+      max-width: 100%;
+      max-height: 70vh;   /* 画面高さを超えて巨大化しない */
+      width: auto;        /* 縦長でも横長でも比率を崩さない */
+      height: auto;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(15, 23, 42, 0.10);
+      box-shadow: 0 10px 24px rgba(11, 58, 109, 0.18);
+      background: #ffffff;
+      transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+      cursor: zoom-in;
+    }
+    .ai-figure-link:hover .ai-figure-img{
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 18px 34px rgba(2, 6, 23, 0.18);
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .ai-figure-note { margin: 0.6rem auto 0; color:#475569; max-width: 980px; }
+    @media (max-width: 720px){
+      .ai-figure-img{ max-height: 58vh; }
+    }
+  
+    /* Prompt ブロック（コピペしやすく） */
+    .prompt-card{
+      max-width: 1120px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 1rem;
+      padding: 1.0rem 1.1rem 1.0rem;
+      box-shadow: 0 14px 30px rgba(11, 58, 109, 0.14);
+    }
+    .prompt-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.6rem;
+      align-items:center;
+      margin-bottom: 0.8rem;
+    }
+    .prompt-pre{
+      margin:0;
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius: 0.9rem;
+      padding: 1rem 1rem;
+      overflow:auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    .prompt-note{
+      margin: 0.7rem 0 0;
+      color:#64748b;
+      font-size:0.85rem;
+    }
+
+</style>
+
+</head>
+<!-- [1] HEAD END -->
+
+<body>
+<div class="site-wrapper">
+
+  <!-- [2] SITE_HEADER START -->
+<header class="site-header">
+    <div class="header-inner">
+      <div class="brand-block">
+        <div class="brand-logo">AbeLab</div>
+        <div class="brand-tagline">AIの学習と現場実装を、速く・確実に前へ。</div>
+      </div>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rpa.html">RPA</a></li>
+          <li><a href="sales-invoice.html">請求書</a></li>
+          <li><a href="#home">導入</a></li>
+          <li><a href="#speed">速度</a></li>
+          <li><a href="#metrics">指標</a></li>
+          <li><a href="#context-engineering">Context Eng</a></li>
+          <li><a href="#degradation">劣化</a></li>
+          <li><a href="#countermeasures">対策</a></li>
+          <li><a href="#summary">まとめ</a></li>
+          <li><a href="#cta">CTA</a></li>
+          <li><a href="#prompt">Prompt</a></li>
+          <li><a href="#context-infographics">図解</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav" hidden>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="rpa.html">RPA</a></li>
+        <li><a href="sales-invoice.html">請求書</a></li>
+        <li><a href="#home">導入</a></li>
+        <li><a href="#speed">速度</a></li>
+        <li><a href="#metrics">指標</a></li>
+        <li><a href="#context-engineering">Context Eng</a></li>
+        <li><a href="#degradation">劣化</a></li>
+        <li><a href="#countermeasures">対策</a></li>
+        <li><a href="#summary">まとめ</a></li>
+        <li><a href="#cta">CTA</a></li>
+        <li><a href="#prompt">Prompt</a></li>
+          <li><a href="#context-infographics">図解</a></li>
+      </ul>
+    </nav>
+  </header>
+<!-- [2] SITE_HEADER END -->
+
+  <main>
+
+    <!-- [3] SECTION_HOME START -->
+
+<!-- [1] HEAD START -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RPA（Power Automate Desktop）｜AbeLab</title>
+  <style>
+    :root{
+      --blue1:#0b2d5c;--blue2:#0e4f9a;--blue3:#1d78d6;
+      --ink:#0f172a;--muted:#54606f;--card:#ffffff;--line:#e5e7eb;
+      --shadow:0 10px 30px rgba(0,0,0,.10);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;color:var(--ink);background:#f6f7fb}
+    a{color:inherit;text-decoration:none}
+
+    /* top nav */
+    header{background:linear-gradient(90deg,var(--blue1),var(--blue2));color:#fff;box-shadow:0 6px 14px rgba(0,0,0,.12)}
+    .nav{max-width:1200px;margin:0 auto;padding:18px 22px;display:flex;align-items:center;gap:20px}
+    .brand{display:flex;flex-direction:column;gap:6px;min-width:300px}
+    .brand .logo{font-size:34px;font-weight:800;letter-spacing:.02em}
+    .brand .tag{font-size:20px;font-weight:700;opacity:.98}
+    .brand .sub{font-size:19px;font-weight:700;opacity:.95}
+    .menu{margin-left:auto;display:flex;gap:28px;align-items:center}
+    .menu a{font-size:20px;font-weight:700;opacity:.95}
+    .menu a:hover{opacity:1;text-decoration:underline}
+
+    /* page hero */
+    .hero{background:linear-gradient(135deg,#0f63c6,#2f8ef0);color:#fff}
+    .hero-inner{max-width:1200px;margin:0 auto;padding:42px 22px 34px}
+    .hero-kicker{font-size:18px;font-weight:800;letter-spacing:.12em;opacity:.92}
+    .hero-title{font-size:48px;font-weight:900;margin:10px 0 10px}
+    .hero-lead{font-size:22px;font-weight:700;max-width:900px;line-height:1.65;margin:0}
+
+    /* content */
+    .container{max-width:1200px;margin:0 auto;padding:26px 22px 60px}
+    .section{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px 26px 22px;margin:20px 0}
+    .section h2{font-size:34px;margin:0 0 8px;font-weight:900}
+    .section-sub{font-size:20px;color:var(--muted);margin:0 0 18px;font-weight:700;line-height:1.7}
+
+    .pill{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:#f8fafc;border-radius:999px;padding:10px 14px;font-weight:800;color:#20324a}
+
+    .kv{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+    .card{border:1px solid var(--line);border-radius:16px;background:#fff;padding:18px}
+    .card h3{margin:0 0 10px;font-size:24px;font-weight:900}
+    .card p{margin:0;color:#2a3340;font-size:18px;line-height:1.8;font-weight:650}
+    .list{margin:10px 0 0;padding:0 0 0 18px}
+    .list li{font-size:18px;line-height:1.8;font-weight:650;margin:6px 0}
+
+    .cta-row{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 22px;font-weight:900;font-size:18px;border:2px solid #dbeafe}
+    .btn.primary{background:#3aa7ff;color:#0b1530;border-color:transparent;box-shadow:0 10px 20px rgba(58,167,255,.25)}
+    .btn.ghost{background:#fff;color:#0b2d5c;border-color:#93c5fd}
+    .btn:hover{transform:translateY(-1px)}
+
+    /* demo */
+    .inv-note{margin-top:12px;font-size:1.20rem;line-height:1.85;color:#2b2b2b}
+.slowmo-emph{font-size:1.35rem;font-weight:900;display:inline-block}
+    .inv-list{margin:10px 0 0;padding-left:20px}
+    .inv-list li{margin:6px 0;font-size:1.05rem;line-height:1.7}
+    .demo-wrap{margin:12px auto 0;border:1px solid #e0e0e0;border-radius:12px;padding:18px;background:#fbfcfe;max-width:980px}
+    .demo-caption{font-size:1.75rem;font-weight:900;margin:0 0 14px;color:#1f1f1f;text-align:center}
+    .demo-media{display:flex;justify-content:center}
+    video, img{max-width:100%;border-radius:12px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .brand{min-width:auto}
+      .menu{gap:16px}
+      .hero-title{font-size:38px}
+      .kv{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<!-- [1] HEAD END -->
+<!-- [3] SECTION_HOME END -->
+
+    <!-- [4] SECTION_SPEED START -->
+<section id="speed" class="about-section">
+      <div class="section-header">
+        <h2 class="section-title">なぜ今、速度にこれほど投資するのか</h2>
+        <p class="section-subtitle">エージェントは「リクエスト → 思考 → 応答」を何度も回す。だから<strong>1回の遅さ</strong>が累積します。</p>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-text">
+          <h3 class="about-heading">1秒の短縮が、20回で20秒になる</h3>
+          <p>
+            AIエージェントは単発のチャットではなく、ループ構造で成果を作ります。
+            もし20回ループするタスクなら、<strong>1秒の短縮が20秒の差</strong>になります。
+          </p>
+
+          <h3 class="about-heading">平均速度より「たまに遅い回」が致命傷</h3>
+          <p>
+            本当に困るのは、普段は速いのに「たまに異常に遅い」ケースです。
+            ループ回数が増えるほど、どこかで遅い回に当たる確率が上がり、
+            タスク全体の所要時間と体感品質を押し下げます。
+          </p>
+
+          <p>
+            だから今は<strong>平均速度</strong>より、<strong>最悪ケース（p95/p99）</strong>への投資が増えています。
+          </p>
+        </div>
+
+        <aside class="about-side">
+          <div class="about-card">
+            <p class="about-label">WORKFLOW FIRST</p>
+            <ul class="about-list">
+              <li>ループ回数 × 遅い回 = 体感品質の悪化</li>
+              <li>「たまに遅い」を減らすと運用が安定する</li>
+              <li>速度はUXではなく、設計要件</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+<!-- [4] SECTION_SPEED END -->
+
+    <!-- [5] SECTION_METRICS START -->
+<section id="metrics" class="projects-section">
+      <div class="section-header">
+        <h2 class="section-title">速度の見方：TTFT / ITL / p95 を分ける</h2>
+        <p class="section-subtitle">同じ「遅い」でも原因が違う。指標を分けると、打ち手が決まります。</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <div class="project-body">
+            <h3 class="project-title">TTFT（Time To First Token）</h3>
+            <p class="project-tag">最初の一言が出るまで</p>
+            <p class="project-summary">
+              入力後、最初のトークンが出るまでの時間。<br>
+              体感の「待たされ感」を作りやすい。
+            </p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-body">
+            <h3 class="project-title">ITL（Inter-Token Latency）</h3>
+            <p class="project-tag">出力の滑らかさ</p>
+            <p class="project-summary">
+              トークン間の遅延。<br>
+              文章が「流れるように出ない」体感の悪さはここに出ます。
+            </p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-body">
+            <h3 class="project-title">p95（遅い側5%）</h3>
+            <p class="project-tag">最悪ケースの支配</p>
+            <p class="project-summary">
+              遅い側5%の速度。<br>
+              ループ型のエージェントでは、どこかで遅い回を踏む確率が高く、<strong>最重要</strong>になりやすい指標です。
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+<!-- [5] SECTION_METRICS END -->
+
+    <!-- [6] SECTION_APPROACHES START -->
+<section id="approaches" class="about-section">
+      <div class="section-header">
+        <h2 class="section-title">2つの高速化アプローチ（解決する遅さが違う）</h2>
+        <p class="section-subtitle">どちらも速くなる一方で、得意な「遅さの種類」が異なります。</p>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-text">
+          <h3 class="about-heading">❶ 専用ハードウェア（素の速度を押し上げる）</h3>
+          <ul>
+            <li>Cerebras / Groq / Tesla系など</li>
+            <li>計算・メモリ帯域のボトルネックを解消して、基礎性能を上げる</li>
+            <li>「高速道路を新設する」イメージ</li>
+          </ul>
+
+          <h3 class="about-heading">❷ 推論スタック最適化（p95を削る）</h3>
+          <ul>
+            <li>vLLM / SGLang など、ソフトウェア層での最適化</li>
+            <li>キャッシュ再利用・バッチ最適化で、遅い回（p95側）を削る</li>
+            <li>「既存道路の信号制御を最適化する」イメージ</li>
+          </ul>
+
+          <p>重要なのは「どちらが良いか」ではなく、<strong>いま困っている遅さ</strong>に対して打ち手を選ぶことです。</p>
+        </div>
+
+        <aside class="about-side">
+          <div class="about-card">
+            <p class="about-label">判断のガイド</p>
+            <ul class="about-list">
+              <li>TTFTがつらい → まず入口（ネットワーク/ロード/初期化）を疑う</li>
+              <li>ITLがつらい → 生成の詰まり（モデル/並列/ストリーム）を疑う</li>
+              <li>p95がつらい → スパイク要因（混雑/キャッシュ/バッチ）を疑う</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+<!-- [6] SECTION_APPROACHES END -->
+
+    <!-- [7] SECTION_CONTEXT_ENGINEERING START -->
+<section id="context-engineering" class="about-section">
+      <div class="section-header">
+        <h2 class="section-title">Context Engineering 2.0（プロンプトの次の設計領域）</h2>
+        <p class="section-subtitle">コンテキストは「ただ長ければ良い」ではなく、<strong>有限リソース（Attention Budget）</strong>です。</p>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-text">
+          <h3 class="about-heading">なぜ「プロンプトを工夫する」だけでは足りないのか</h3>
+          <p>
+            情報を増やすほど良くなる、という前提が崩れています。<br>
+            問われるのは「何を詰め込むか」ではなく、<strong>何を厳選するか</strong>。
+            そして、劣化パターンは一定の型で起きます。
+          </p>
+
+          <h3 class="about-heading">Context Engineeringの5要素</h3>
+          <ul>
+            <li><strong>システムプロンプト</strong>：役割・タスク定義</li>
+            <li><strong>タスク制約</strong>：ガイドライン・品質基準</li>
+            <li><strong>ツール定義</strong>：API/関数の明示</li>
+            <li><strong>メモリ</strong>：短期/長期の記憶管理</li>
+            <li><strong>動的コンテキスト</strong>：必要情報のタイムリーな注入</li>
+          </ul>
+
+          <p>「単一プロンプトの言い回し」ではなく、AIが見る情報環境の設計に移る――それが Context Engineering です。</p>
+        </div>
+
+        <aside class="about-side">
+          <div class="about-card">
+            <p class="about-label">このページの図解</p>
+            <ul class="about-list">
+              <li>基本原則：<code>image/context.png</code></li>
+              <li>劣化と対処：<code>image/context_rekka.png</code></li>
+              <li>※ 画像は AI ページと同階層の <code>image</code> フォルダに配置</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+<!-- [7] SECTION_CONTEXT_ENGINEERING END -->
+
+    <!-- [8] SECTION_DEGRADATION START -->
+<section id="degradation" class="projects-section">
+      <div class="section-header">
+        <h2 class="section-title">劣化5パターン（起きる型を知る）</h2>
+        <p class="section-subtitle">「失敗の仕方」は決まった型で発生します。まず型を知ると、設計で潰せます。</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-body">
+            <h3 class="project-title">❶ Context Drift（逸脱）</h3>
+            <p class="project-summary">途中から論点がズレる。会話が長いほど起きやすいです。</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-body">
+            <h3 class="project-title">❷ Context Overload（過積載）</h3>
+            <p class="project-summary">情報が多すぎて、重要ポイントの重みが薄まる。</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-body">
+            <h3 class="project-title">❸ Context Poisoning（汚染）</h3>
+            <p class="project-summary">誤情報・古い情報・ノイズが混ざって誤判断を誘発する。</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-body">
+            <h3 class="project-title">❹ Context Dilution（希釈）</h3>
+            <p class="project-summary">重要指示が薄まり、行動がぼやける。</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-body">
+            <h3 class="project-title">❺ Context Clash（衝突）</h3>
+            <p class="project-summary">「正しい情報」同士が矛盾してぶつかる。バージョン差・視点差の混在で判断が不安定になります。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+<!-- [8] SECTION_DEGRADATION END -->
+
+    <!-- [9] SECTION_COUNTERMEASURES START -->
+<section id="countermeasures" class="about-section">
+      <div class="section-header">
+        <h2 class="section-title">対策は「4バケット」で整理できる</h2>
+        <p class="section-subtitle">劣化への対処は、実務では次の4つに分解すると設計しやすくなります。</p>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-text">
+          <h3 class="about-heading">Write（書き出し）</h3>
+          <p>情報を外部に保存して、アクティブなコンテキストを軽く保つ（ログ、メモ、要点の外部化）。</p>
+
+          <h3 class="about-heading">Select（選別）</h3>
+          <p>検索・フィルタで関連情報だけを取り出す。網羅性より有益性を優先する。</p>
+
+          <h3 class="about-heading">Compress（圧縮）</h3>
+          <p>要約・抽象化でトークン数を削減する。長くなったら「圧縮トリガー」を設ける。</p>
+
+          <h3 class="about-heading">Isolate（隔離）</h3>
+          <p>タスクや役割ごとにセッション/エージェントを分割し、注意予算を分離する（マルチエージェント含む）。</p>
+
+          <p>「コンテキストを増やす」ではなく、<strong>薄く・強く・必要なときだけ</strong>を実現するのがポイントです。</p>
+        </div>
+
+        <aside class="about-side">
+          <div class="about-card">
+            <p class="about-label">運用チェック（最小）</p>
+            <ul class="about-list">
+              <li>重要事項は先頭に置いたか（位置バイアス対策）</li>
+              <li>無関係情報を予防的に入れていないか（散漫対策）</li>
+              <li>古い指示/古い仕様が混ざっていないか（衝突/汚染対策）</li>
+              <li>一定長で圧縮・分割する設計があるか（中だるみ対策）</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+<!-- [9] SECTION_COUNTERMEASURES END -->
+
+    <!-- [10] SECTION_SUMMARY START -->
+<section id="summary" class="about-section">
+      <div class="section-header">
+        <h2 class="section-title">本日のまとめ（設計に落とす要点）</h2>
+        <p class="section-subtitle">速度とコンテキスト設計は、エージェント時代の「成果の再現性」を作ります。</p>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-text">
+          <ul>
+            <li><strong>速度は設計要件</strong>：ループ構造では遅さが累積する</li>
+            <li><strong>平均よりp95</strong>：たまに遅い回がタスク全体を支配する</li>
+            <li><strong>指標を分ける</strong>：TTFT / ITL / p95 は別の遅さ</li>
+            <li><strong>高速化は2系統</strong>：専用HW（素の速度）と推論スタック最適化（p95削減）</li>
+            <li><strong>Context Engineering 2.0</strong>：プロンプトではなく「情報環境」を設計する</li>
+            <li><strong>劣化は予測できる</strong>：5パターンを知り、4バケットで対策する</li>
+          </ul>
+        </div>
+
+        <aside class="about-side">
+          <div class="about-card">
+            <p class="about-label">次にやること</p>
+            <ul class="about-list">
+              <li>自分の課題が TTFT/ITL/p95 のどれか切り分ける</li>
+              <li>プロンプトを増やす前に Select/Compress を入れる</li>
+              <li>衝突/汚染しやすい情報を Isolate で分離する</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+<!-- [10] SECTION_SUMMARY END -->
+
+    <!-- [11] SECTION_PROMPT_PACK START -->
+<section id="prompt-pack" class="projects-section">
+      <div class="section-header">
+        <h2 class="section-title">プロンプト保存版：3大AI “公式っぽい流儀” をコピペ運用する</h2>
+        <p class="section-subtitle">このまま貼って使える「運用プロンプト」。迷ったらこの型に戻れば壊れにくい。</p>
+      </div>
+
+      <!-- [12] SECTION_12 START -->
+<section class="about-section" style="padding-top: 0;">
+        <div class="about-layout">
+          <div class="about-text">
+            <h3 class="about-heading">ChatGPT / Gemini / Claude を“型”で扱う</h3>
+            <p>
+              それぞれ得意領域が違うので、同じ指示でも挙動が変わります。<br>
+              最短で安定させるには「流儀（プロンプト設計の型）」を固定するのがコツです。
+            </p>
+
+            <h3 class="about-heading">使い方</h3>
+            <ul>
+              <li>下のテンプレをそのまま貼る</li>
+              <li>不足情報がある場合だけ、質問が返ってくる</li>
+              <li>回答が出たら「最終成果物のみ」に合成して返してくれる</li>
+            </ul>
+          </div>
+
+          <aside class="about-side">
+            <div class="about-card">
+              <p class="about-label">3大AI共通テンプレ（保存用）</p>
+              <pre style="margin:0; font-size: 0.78rem; white-space: pre-wrap; line-height: 1.55;">
+あなたは「最終成果物の品質を最大化する」アシスタント。
+ユーザーの依頼に対し、内部で多段階の品質向上を行うが、その途中過程は一切出力しない。
+出力するのは最終成果物のみ。
+
+【内部プロセス（出力しない）】
+S1 依頼を仕様に翻訳：
+- 目的、相手、成果物の形、制約（長さ/トーン/禁止事項）、成功条件を仮置きで確定
+S2 論点の網羅：
+- 抜けやすい観点（費用/手続/反論/リスク/代替案/誤解）を洗い出して構造化
+S3 世界比較（必要な場合のみ検索）：
+- 公的/一次情報を優先して、一般基準・統計・慣行を抽出し、論点を細分化
+S4 分岐点抽出と不足情報の回収：
+- 結果が変わる不足情報がある場合のみ「確認質問」を作る（最大10問、回答形式つき）
+S5 最終合成：
+- ユーザーの全文と回答を統合し、完成品を生成（そのまま使える形）
+
+【出力ルール】
+- 質問が必要な場合は「確認質問のみ」を出力し、解説や途中案は出さない
+- 質問が不要な場合は、いきなり最終成果物のみを出力する
+- 最終成果物は、ユーザーの意図と制約を最優先し、不要な言い換えや余計な改変を避ける
+- 断定できない点は断定しない。必要なら前提を明示する
+              </pre>
+            </div>
+          </aside>
+        </div>
+
+<!-- [11] SECTION_PROMPT_PACK END -->      </section>
+<!-- [12] SECTION_12 END -->
+    </section>
+
+    <!-- [13] SECTION_CTA START -->
+<section id="cta" class="contact-section">
+      <div class="section-header">
+        <h2 class="section-title">相談・依頼（学習→設計→実装まで）</h2>
+        <p class="section-subtitle">「AIの学習を実装に落とす」までを、最短で一緒に進めます。</p>
+      </div>
+
+      <div class="contact-content">
+        <p>
+          AI活用は、学習だけで終わると現場に乗りません。<br>
+          実務に入れるなら「速度（運用体感）」と「Context設計（劣化対策）」を含めて、
+          止まらない形にするのが近道です。
+        </p>
+
+        <ul class="contact-links">
+          <li>相談：メール（例） <a href="mailto:info@example.com">info@example.com</a></li>
+          <li>LinkedIn：AbeLab（プロフィールリンク）</li>
+        </ul>
+
+        <p class="contact-note">※ メールアドレス・リンクは、公開用に差し替えてください。</p>
+      </div>
+    </section>
+<!-- [13] SECTION_CTA END -->
+
+    <!-- [14] SECTION_PROMPT START -->
+<section id="prompt" class="glossary-section">
+      <div class="section-header">
+        <h2 class="section-title">Prompt（しょぼい依頼 → 最高の成果物）</h2>
+        <p class="section-subtitle">実運用で使っている「依頼の品質を上げる」ベースプロンプト（コピペ用）。</p>
+      </div>
+
+      <div class="ai-figure">
+        <div class="prompt-card">
+          <div class="prompt-actions">
+            <button class="btn primary-btn" type="button" id="copyPromptBtn">コピー</button>
+            <a class="btn ghost-btn" href="#cta">相談へ</a>
+          </div>
+
+          <pre class="prompt-pre"><code id="promptText">🔴（ここに、私が使っているプロンプトを置きます👇プロジェクト用）
+
+投稿から学ばせていただいた結果：感謝。
+
+＜プロンプト開始＞*******************************
+
+✅ プロンプト（投稿用：見出しを整理して読みやすく）
+✅ しょぼい依頼 → 最高の成果物に変換するプロンプト
+（最小変更で強化した「提出版」：重要3点のみ反映）
+
+あなたは「依頼主の言語化できない想いを汲み取り、依頼を“世界基準”の形に再設計して、プロ品質の成果物を出すAI」です。
+依頼文は曖昧・情報不足・論理未整理でも構いません。AI側で補完し、再現可能な指示に整えてから実行してください。
+
+【基本方針（上位運用）】
+- AIは“正解を当てる存在”ではなく、“依頼を再設計し品質を保証する補正装置”として振る舞う
+- 依頼者の能力差（文章力・思考整理力）が成果物の差にならないようにする
+- 「推定」と「事実」を必ず分ける
+
+========================
+【Step 1：深層ニーズの抽出（Intent &amp; Context）】
+依頼文から、以下を「推定」として整理してください。
+
+1) Outcome（成功の定義）：
+   この成果物によって「何がどう良くなるか」／理想の状態は何か
+
+2) Use case（利用シーン）：
+   どこで・誰が・何のために使うか（例：社内共有／顧客向け／SNS／提出課題）
+
+3) Pain points（詰まりどころ）：
+   依頼者が困っていそうな点（例：構成が思いつかない／専門知識不足／時間がない）
+
+4) Not-to-do（避けたいこと）：
+   触れてほしくない点、NG表現、やらないこと（推定でよい）
+
+※ここで書く内容は必ず「推定」と明示し、事実と混同しない。
+
+========================
+【Step 2：依頼の再設計（Mission / Condition / Format）】
+Step1をもとに、依頼を「理想的な依頼文」に書き直してください。以下の構造を必ず含めること。
+
+- Mission：このタスクの究極のゴール（Outcomeに直結）
+- Condition：前提・制約（対象読者／トーン／長さ／期限／必須要素／NG要素）
+- Output Standard：プロ品質の基準（分かりやすさ・再現性・誤解防止など）
+- Format：出力形式（箇条書き／文章／表／テンプレ／コード 等）
+
+※「理想的な依頼文」は、依頼者がそのまま再利用できる1本の文章として完成させる。
+
+========================
+【Step 3：プロフェッショナル実行（Execution）】
+Step2の「理想的な依頼文」を前提に、提出可能な完成度で成果物を作成してください。加えて、以下を必ず入れてください。
+
+- 再現性：他者が見ても同じ品質で使える構造（手順・枠組み・判断基準）
+- 耐障害性：想定される例外（迷いどころ／失敗しやすい点）への対処
+- Bプラン：別の切り口／代替案を1つ提示（必要に応じて）
+
+【品質セルフチェック（Acceptance Criteria：3項目）】
+- 第三者が読んでも理解できるか
+- そのまま提出／実務で使える具体性があるか
+- 目的（Outcome）に直結しているか
+
+========================
+【暴走防止ルール】
+- 重要な前提が欠けている場合のみ、確認質問は最大3問まで（それ以外はAI側で補完）
+- 価値観や好みが分かれる場合は、選択肢を提示し断定しない
+- 事実確認が必要な内容（最新情報・規約・数値など）は、必要なら「要調査」として扱う
+
+最後に、必要なら「v1→フィードバック→v2」で改善する提案を1行添えてください。
+
+では、次の依頼を処理してください。
+（🔴ここに依頼文を貼る）
+
+＜プロンプト終了＞*******************************
+
+🔚 投稿の締め
+このプロンプトは、
+Gemini／Copilot／Jenspark など複数のAIで検証・修正案を取り入れつつ、
+私が一番伝えたい思想が薄まらない形で固定しています。
+
+AIごとに最適解は違いますが、
+「人の能力差を成果物の差にしない」
+「考えが弱くても、提出物の品質は守る」
+この軸だけは、どの修正でも崩さないようにしています。
+
+実際には、
+このベースプロンプトを
+GPTのプロジェクト／MyGPTごとに、
+「何を作るか（文章・動画・業務資料・コードなど）」に合わせて改変して使っています。（簡単なものを作るときは邪魔になります）
+
+プロンプトを“勉強する対象”にするのではなく、
+誰でも使える「品質を守る道具」にする。
+
+それが、私のやり方です🔥
+</code></pre>
+
+          <p class="prompt-note">※ 長いので折り返し表示にしています。原文の改行は保持されます。</p>
+        </div>
+      </div>
+    </section>
+<!-- [14] SECTION_PROMPT END -->
+
+
+
+    <!-- [15] SECTION_CONTEXT_INFOGRAPHICS START -->
+<section id="context-infographics" class="about-section">
+      <div class="section-header">
+        <h2 class="section-title">図解：Context Engineering / 劣化パターン</h2>
+        <p class="section-subtitle">図解はローカル画像で管理（ポートフォリオで安定して表示するため）。クリックで拡大できます。</p>
+      </div>
+
+      <div class="ai-figure">
+        <h3 class="about-heading">コンテキストエンジニアリングの基本原則（図解）</h3>
+        <div class="ai-figure-media">
+          <a class="ai-figure-link" href="image/context.png" target="_blank" rel="noopener noreferrer" aria-label="図解を拡大表示（別タブ）">
+            <img class="ai-figure-img" src="image/context.png" alt="コンテキストエンジニアリングの基本原則（図解）" loading="lazy">
+          </a>
+        </div>
+        <p class="ai-figure-note">画像出典：LinkedIn投稿（下の参考リンク参照）</p>
+      </div>
+
+      <div class="ai-figure">
+        <h3 class="about-heading">コンテキスト劣化パターンと対処戦略（図解）</h3>
+        <div class="ai-figure-media">
+          <a class="ai-figure-link" href="image/context_rekka.png" target="_blank" rel="noopener noreferrer" aria-label="図解を拡大表示（別タブ）">
+            <img class="ai-figure-img" src="image/context_rekka.png" alt="コンテキスト劣化パターンと対処戦略（図解）" loading="lazy">
+          </a>
+        </div>
+        <p class="ai-figure-note">画像出典：LinkedIn投稿（下の参考リンク参照）</p>
+      </div>
+
+      <div style="max-width:1120px; margin:0 auto;">
+        <p style="margin:0; color:#334155;">
+          参考リンク：
+          <a href="https://www.linkedin.com/posts/anthropichq_context-engineering-is-the-new-prompt-engineering-activity-7346243573874806784-uItN" target="_blank" rel="noopener noreferrer">Context Engineering 2.0</a>
+          ／
+          <a href="https://www.linkedin.com/posts/anthropichq_context-engineering-patterns-activity-7346966729724102657-m0Tz" target="_blank" rel="noopener noreferrer">Context Engineering patterns</a>
+        </p>
+      </div>
+    </section>
+<!-- [15] SECTION_CONTEXT_INFOGRAPHICS END -->
+
+  </main>
+
+  <!-- [16] FOOTER START -->
+<footer class="site-footer">
+    <p class="footer-copy">© AbeLab Portfolio</p>
+  </footer>
+<!-- [16] FOOTER END -->
+
+  <button class="scroll-top-button" id="scrollTopButton" aria-label="Scroll to top">↑</button>
+</div>
+  <!-- [17] SCRIPTS START -->
+<script src="main.js"></script>
+  <script>
+    // Promptコピー（ページ単体で完結）
+    (function(){
+      const btn = document.getElementById('copyPromptBtn');
+      const code = document.getElementById('promptText');
+      if(!btn || !code) return;
+
+      async function copyText(text){
+        if(navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+        // fallback（file:// などでも動く）
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        const ok = document.execCommand('copy');
+        ta.remove();
+        return ok;
+      }
+
+      btn.addEventListener('click', async function(){
+        const text = code.innerText;
+        const prev = btn.textContent;
+        try{
+          const ok = await copyText(text);
+          btn.textContent = ok ? 'コピーしました' : 'コピーできませんでした';
+        }catch(e){
+          btn.textContent = 'コピーできませんでした';
+        }
+        btn.disabled = true;
+        setTimeout(function(){
+          btn.textContent = prev;
+          btn.disabled = false;
+        }, 1200);
+      });
+    })();
+  </script>
+
+
+<!-- [17] SCRIPTS END --></body>
+</html>
