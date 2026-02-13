@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- 文字コードと言語設定 -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- タイトルと説明 -->
+    <title>AbeLab Portfolio｜Excel・Access・AI 業務改善ラボ</title>
+    <meta name="description" content="Excel・Access・AI・RPAで業務改善ツールを作る AbeLab のポートフォリオサイトです。" />
+
+    <!-- CSS 読み込み -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- サイト全体を包むコンテナ -->
+    <div class="site-wrapper">
+
+        <!-- ヘッダー：ロゴ＋ナビゲーション -->
+        <header class="site-header" id="top">
+            <div class="header-inner">
+                <div class="brand-block">
+                    <div class="brand-logo">AbeLab</div>
+                    <div class="brand-tagline">Excel × Access × AI で、現場の「困った」を軽くする。</div>
+                </div>
+
+                <!-- PC 用ナビ -->
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- モバイル用メニューアイコン -->
+                <button class="nav-toggle" aria-label="メニューを開く">
+                    <span class="nav-toggle-line"></span>
+                    <span class="nav-toggle-line"></span>
+                    <span class="nav-toggle-line"></span>
+                </button>
+            </div>
+
+            <!-- モバイル用ナビメニュー -->
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="#home" class="mobile-link">Home</a></li>
+                    <li><a href="#projects" class="mobile-link">Projects</a></li>
+                    <li><a href="#about" class="mobile-link">About</a></li>
+                    <li><a href="#contact" class="mobile-link">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <main>
+
+            <!-- Hero（トップ）セクション -->
+            <section id="home" class="hero-section">
+                <div class="hero-inner">
+                    <div class="hero-text">
+                        <p class="hero-label">G-Wings / AbeLab</p>
+                        <h1 class="hero-title">
+                            現場の Excel から、<br />
+                            その先の DX へ。
+                        </h1>
+                        <p class="hero-lead">
+                            「請求書が大変」「データがバラバラ」「毎月同じ作業でクタクタ」――。<br />
+                            AbeLab は、Excel・Access・AI・RPA を組み合わせて、<br />
+                            ちいさな現場から動き出せる業務改善ツールを作ります。
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn primary-btn">ツールを見る</a>
+                            <a href="#about" class="btn ghost-btn">AbeLabについて</a>
+                        </div>
+                    </div>
+
+                    <!-- 右側：イメージブロック -->
+                    <div class="hero-visual">
+                        <div class="hero-visual-card">
+                            <p class="hero-visual-label">Main Tools</p>
+                            <ul class="hero-visual-list">
+                                <li>請求書自動作成ツール</li>
+                                <li>ブロック型ACCESS（Bucket DB）</li>
+                                <li>PDFテキスト化チェックツール</li>
+                            </ul>
+                            <p class="hero-visual-note">Excel＋Access＋AI の「橋渡しエンジニア」</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects セクション -->
+            <section id="projects" class="projects-section">
+                <div class="section-header">
+                    <h2 class="section-title">Projects</h2>
+                    <p class="section-subtitle">現場から生まれた、AbeLab の業務改善ツール。</p>
+                </div>
+
+                <!-- プロジェクトカード一覧 -->
+                <div class="projects-grid">
+                    <!-- プロジェクト1：BucketBlocks -->
+                    <article class="project-card" data-project-id="bucket">
+                        <div class="project-image-wrapper">
+                            <!-- 画像パス：img/1cube.png -->
+                            <img src="img/1cube.png" alt="ブロック型 ACCESS BucketBlocks のイメージ" class="project-image">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">ブロック型 ACCESS｜BucketBlocks</h3>
+                            <p class="project-tag">データストア / 汎用マスタ</p>
+                            <p class="project-summary">
+                                「項目が増え続ける」「システム化するほどでもない」現場向けに、
+                                テキスト・数値・日付をバケツのように追加できる ACCESS データベースです。
+                            </p>
+                            <button class="project-detail-button" data-project-target="bucket">
+                                詳細を見る
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- プロジェクト2：請求書ツール -->
+                    <article class="project-card" data-project-id="invoice">
+                        <div class="project-image-wrapper">
+                            <!-- 画像パス：img/2seikyusyoinvoice.png -->
+                            <img src="img/2seikyusyoinvoice.png" alt="請求書自動作成ツールのイメージ" class="project-image">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">請求書自動作成ツール</h3>
+                            <p class="project-tag">Excelマクロ / 請求書</p>
+                            <p class="project-summary">
+                                ACCESSの売上データから、Excelの請求書フォームに自動で明細を流し込み、
+                                PDF出力とログ記録まで一気通貫で行うツールです。
+                            </p>
+                            <button class="project-detail-button" data-project-target="invoice">
+                                詳細を見る
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- プロジェクト3：PDFテキスト化 -->
+                    <article class="project-card" data-project-id="pdf">
+                        <div class="project-image-wrapper">
+                            <!-- 画像パス：img/3pdftotext.png -->
+                            <img src="img/3pdftotext.png" alt="PDFテキスト化チェックツールのイメージ" class="project-image">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">PDFテキスト化チェックツール</h3>
+                            <p class="project-tag">PDF／監査ログ</p>
+                            <p class="project-summary">
+                                PDFからテキストを抽出し、チェック用Excelに自動で貼り付け。
+                                「どのファイルを、いつ、どう処理したか」をログで管理できます。
+                            </p>
+                            <button class="project-detail-button" data-project-target="pdf">
+                                詳細を見る
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- プロジェクト詳細表示エリア（JSで中身を切り替え） -->
+                <section class="project-detail-panel" aria-label="プロジェクト詳細">
+                    <div class="detail-inner">
+                        <h3 class="detail-title">プロジェクト詳細</h3>
+                        <p class="detail-lead">カードの「詳細を見る」をクリックすると、ここに内容が表示されます。</p>
+
+                        <!-- 詳細テキストを差し替え表示するエリア -->
+                        <div class="detail-content" id="project-detail-content">
+                            <!-- JavaScript で中身を生成 -->
+                        </div>
+
+                        <button class="detail-close-button" type="button">
+                            閉じる
+                        </button>
+                    </div>
+                </section>
+            </section>
+
+            <!-- About セクション -->
+            <section id="about" class="about-section">
+                <div class="section-header">
+                    <h2 class="section-title">About AbeLab</h2>
+                    <p class="section-subtitle">「橋渡しエンジニア」としての自己紹介。</p>
+                </div>
+
+                <div class="about-layout">
+                    <div class="about-text">
+                        <h3 class="about-heading">現場とDXのあいだを“やさしく”つなぐ。</h3>
+                        <p>
+                            AbeLab は、福岡・北九州を拠点に、
+                            40年近くの事務経験と、Excel／Access／VBA／AI のスキルをかけ合わせて、
+                            「現場で本当に使えるツール」を作る個人ラボです。
+                        </p>
+                        <p>
+                            大がかりなシステムではなく、
+                            まずは Excel や既存の業務フローを活かしながら、
+                            少しずつ・確実に・目にやさしく改善していく。
+                        </p>
+                        <p>
+                            そんな “ちいさなDXのパートナー” をめざしています。
+                        </p>
+                    </div>
+
+                    <aside class="about-side">
+                        <div class="about-card">
+                            <p class="about-label">得意なこと</p>
+                            <ul class="about-list">
+                                <li>請求書・見積・売上集計の自動化</li>
+                                <li>ACCESSでのデータベース設計</li>
+                                <li>Excelマクロ＋AIのログ管理</li>
+                                <li>現場の声を整理して仕様に落とし込むこと</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- Contact セクション -->
+            <section id="contact" class="contact-section">
+                <div class="section-header">
+                    <h2 class="section-title">Contact</h2>
+                    <p class="section-subtitle">LinkedIn やポートフォリオから、お気軽にご連絡ください。</p>
+                </div>
+
+                <div class="contact-content">
+                    <p>
+                        現在は、学びとポートフォリオ作成を進めながら、<br />
+                        「Excel・Access・AI を使った業務改善」に関する相談や、<br />
+                        小さなツール開発のお手伝い先を探しています。
+                    </p>
+                    <ul class="contact-links">
+                        <li>LinkedIn：AbeLab / 安部 洋子</li>
+                        <li>ポートフォリオ：Google Sites（リンク予定）</li>
+                    </ul>
+                    <p class="contact-note">
+                        ※ このページは学習用デモです。実際の案件は内容に応じて個別に設計します。
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <!-- フッター -->
+        <footer class="site-footer">
+            <p class="footer-copy">© 2025 AbeLab. All rights reserved.</p>
+        </footer>
+
+        <!-- ページ上部へ戻るボタン -->
+        <button class="scroll-top-button" aria-label="ページの先頭に戻る">
+            ↑
+        </button>
+    </div>
+
+    <!-- JavaScript 読み込み -->
+    <script src="main.js" defer></script>
+</body>
+</html>
