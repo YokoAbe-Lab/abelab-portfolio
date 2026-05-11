@@ -21,20 +21,19 @@
           <div class="brand-tagline">Excel × Access × AI で、現場の「困った」を解決する。</div>
         </div>
 
-
-<nav class="main-nav">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#projects">Projects</a></li>
-    <li><a href="rpa.html">RPA</a></li>
-    <li><a href="AI.html">AI</a></li>
-    <li><a href="sales-invoice.html">請求書</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-</nav>
-
-
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#ai-ui">AI支援UI</a></li>
+            <li><a href="index.html#development-log">開発ログ</a></li>
+            <li><a href="rpa.html">RPA</a></li>
+            <li><a href="AI.html">AI</a></li>
+            <li><a href="sales-invoice.html">請求書</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
 
         <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false">
           <span class="nav-toggle-line"></span>
@@ -43,22 +42,23 @@
         </button>
       </div>
 
-<nav class="mobile-nav" id="mobileNav">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#projects">Projects</a></li>
-    <li><a href="rpa.html">RPA</a></li>
-    <li><a href="AI.html">AI</a></li>
-    <li><a href="sales-invoice.html">請求書</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-</nav>
-
-
+      <nav class="mobile-nav" id="mobileNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#ai-ui">AI支援UI</a></li>
+          <li><a href="index.html#development-log">開発ログ</a></li>
+          <li><a href="rpa.html">RPA</a></li>
+          <li><a href="AI.html">AI</a></li>
+          <li><a href="sales-invoice.html">請求書</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
+
       <!-- =========================
            Hero
       ========================== -->
@@ -67,11 +67,16 @@
           <div class="hero-text">
             <div class="hero-label">PORTFOLIO</div>
             <h1 class="hero-title">ようこそ 安部洋子ポートフォリオへ</h1>
+
             <p class="hero-lead">
-              現場で起きている「困った」を、Excel / Access / RPA / AI の組み合わせで、
-              できるだけシンプルに、壊れにくく、運用しやすく整えることをテーマにしています。
+              現場で困ることを、こういう仕組みに変えられます。
               <br><br>
-              🔴「AI開発支援UI」GPTコードをファイルに自動更新
+              短期の現場で、限られた時間の中から業務の詰まりを見つけ、
+              Excel・Access・VBA・Power Automate Desktop・AIを組み合わせて、
+              現場が回る仕組みに整えることを大切にしています。
+              <br><br>
+              現在は、これまでの経験をもとに、
+              「AI＆Excelマクロ作成サポートツール」を自主制作しています。
             </p>
 
             <div class="hero-actions">
@@ -100,20 +105,21 @@
       <section class="projects-section" id="projects">
         <div class="section-header">
           <h2 class="section-title">Projects</h2>
-          <p class="section-subtitle">気になるプロジェクトカードをクリックすると、下に詳細が表示されます。</p>
+          <p class="section-subtitle">現場の困りごとを、仕組みに変えるための制作・検証事例です。</p>
         </div>
 
         <div class="projects-grid">
+
           <!-- 1) BucketBlocks -->
           <article class="project-card">
             <div class="project-image-wrapper">
               <img class="project-image" src="image/1cube.png" alt="ブロック型 ACCESS BucketBlocks" />
             </div>
             <h3 class="project-title">ブロック型 ACCESS｜BucketBlocks</h3>
-            <p class="project-tag">データストア / 汎用マスタ</p>
+            <p class="project-tag">Access / データストア / 汎用マスタ</p>
             <p class="project-summary">
               「項目が増え続ける」「システム化するほどでもない」現場向けに、
-              テキスト・数値・日付を“バケツ”のように追加できる ACCESS データベースです。
+              テキスト・数値・日付を“バケツ”のように追加できる Access データベースです。
             </p>
             <button class="project-detail-button" type="button" data-project-id="bucket">詳細を見る</button>
           </article>
@@ -124,9 +130,9 @@
               <img class="project-image" src="image/2seikyusyoinvoice.png" alt="請求書自動作成ツール" />
             </div>
             <h3 class="project-title">請求書自動作成ツール</h3>
-            <p class="project-tag">Excel マクロ / 請求書</p>
+            <p class="project-tag">Excel マクロ / Access連携 / 請求書</p>
             <p class="project-summary">
-              ACCESS の売上データから、Excel 請求書フォームへ明細を流し込み、
+              Access の売上データから、Excel 請求書フォームへ明細を流し込み、
               PDF出力とログ記録までを一気通貫で行うツールです。
             </p>
             <a class="project-detail-button" href="sales-invoice.html#demo">詳細（デモ動画）を見る</a>
@@ -141,10 +147,11 @@
             <p class="project-tag">PDF / テキスト化 / RPA連携</p>
             <p class="project-summary">
               PDFをフォルダから自動で読み込み、テキスト化して蓄積・検索・共有へつなぐ仕組みです。
-              詳細はRPAページにまとめます。
+              詳細はRPAページにまとめています。
             </p>
             <a class="project-detail-button" href="rpa.html">RPAページへ</a>
           </article>
+
         </div>
 
         <!-- 詳細パネル（ここに表示） -->
@@ -163,107 +170,215 @@
           </div>
         </div>
       </section>
+
+      <!-- =========================
+           AI Development Support UI
+      ========================== -->
       <section class="ai-ui-section" id="ai-ui">
-    <div class="ai-ui-container" style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+        <div class="ai-ui-container" style="max-width: 1320px; margin: 0 auto; padding: 0 28px;">
+
+          <div class="section-header" style="margin-bottom: 28px;">
+            <h2 class="section-title">AI開発支援UI</h2>
+            <p class="section-subtitle">
+              プロンプト作成・コード保存・確認・バックアップ・復元・記録をまとめた、AI活用のための作業支援画面です。
+            </p>
+          </div>
+
+          <!-- 上の説明文 -->
+          <div class="ai-ui-top-text"
+            style="max-width: 1120px; margin: 0 auto 28px; line-height: 1.95; font-size: 16px;">
+
+            <h3 style="font-size: 30px; margin: 0 0 16px;">AI＆Excelマクロ作成サポートツール</h3>
+
+            <p>
+              このAI開発支援UIは、ChatGPTの回答をそのまま貼り付けて終わりにするのではなく、
+              <strong>依頼文を作る・回答コードを保存する・確認する・戻す・記録する</strong>
+              ところまでを一つの流れとして扱うための仕組みです。
+            </p>
+
+            <p>
+              実際にAIを使って開発を進める中で、チャットが重くなる、コピーや貼り付けが崩れる、
+              どこで何を変更したか分からなくなる、元に戻せない不安が出るなどの課題がありました。
+              その経験をもとに、現場でAIを安全に使うための運用画面として整理しています。
+            </p>
+
+            <div style="margin-top: 18px; padding: 18px 22px; border-left: 5px solid #7aa95c; background: #f6fbf1; border-radius: 8px;">
+              <p style="margin: 0; font-weight: 700; font-size: 17px;">
+                現場で困ることを、こういう仕組みに変えられます。
+              </p>
+              <p style="margin: 10px 0 0;">
+                経験 → 困ったこと → 毎回お願いすること → プロンプト化 → ボタン化 → AI支援UIへ組み込み。
+              </p>
+            </div>
+          </div>
+
+          <!-- 大きな画像 -->
+          <div class="ai-ui-main-image" style="max-width: 1120px; margin: 0 auto 34px;">
+            <img
+              src="image/AI%20%26%20Excel%20Macro%20Creation%20Support%20Tool.png"
+              alt="AI＆Excelマクロ作成サポートツールのメイン画面"
+              style="width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.14);"
+            >
+            <p style="margin-top: 10px; color: #555; font-size: 14px; text-align: center;">
+              AI＆Excelマクロ作成サポートツールのメイン画面
+            </p>
+          </div>
+
+          <!-- 下の説明文 -->
+          <div class="ai-ui-bottom-text"
+            style="max-width: 1120px; margin: 0 auto; line-height: 1.95; font-size: 16px;">
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;">
+
+              <div style="background: #ffffff; padding: 22px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+                <h3 style="margin: 0 0 14px; font-size: 22px;">主な機能</h3>
+                <ul style="padding-left: 20px; margin: 0;">
+                  <li>用途別プロンプト作成：追加・修正・削除・不明・エラーなどを選択</li>
+                  <li>GPT回答コードの保存：回答内容をファイルとして残す</li>
+                  <li>読込前チェック：対象ファイルや貼り付け位置を確認</li>
+                  <li>バックアップ作成：更新前の状態を残してから上書き</li>
+                  <li>復元機能：問題が起きた場合に前の状態へ戻す</li>
+                  <li>作業ログ記録：いつ、何を、どこに反映したかを残す</li>
+                  <li>モジュール管理：VBAコードや部品が迷子にならないよう整理</li>
+                </ul>
+              </div>
+
+              <div style="background: #ffffff; padding: 22px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+                <h3 style="margin: 0 0 14px; font-size: 22px;">このツールで目指していること</h3>
+                <p style="margin: 0;">
+                  AIはコードや文章を作るだけではありません。
+                  現場で使うためには、確認、保存、復元、引継ぎ、再利用まで含めた設計が必要です。
+                  このUIでは、AIとのやり取りで発生する迷い・失敗・戻れない不安を減らし、
+                  誰が見ても作業の流れを追える状態にすることを目指しています。
+                </p>
+              </div>
+
+              <div style="background: #ffffff; padding: 22px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+                <h3 style="margin: 0 0 14px; font-size: 22px;">対応している作業イメージ</h3>
+                <ul style="padding-left: 20px; margin: 0;">
+                  <li>HTML・VBA・資料作成などの修正依頼をプロンプト化</li>
+                  <li>ChatGPTの回答コードを保存し、必要なファイルへ反映</li>
+                  <li>更新前後の状態を確認し、必要に応じて復元</li>
+                  <li>作業日報・整理資料・ボタン対応表として記録</li>
+                </ul>
+              </div>
+
+              <div style="grid-column: 1 / -1; background: #ffffff; padding: 24px 28px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+                <h3 style="margin: 0 0 14px; font-size: 22px;">今後の拡張予定</h3>
+
+                <ul style="padding-left: 20px; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 28px;">
+                  <li>更新前後の差分確認を自動化</li>
+                  <li>ダミーデータ作成・モザイク処理との連携</li>
+                  <li>Excelアドイン化によるモジュール管理の整理</li>
+                  <li>Power Automate Desktop や外部APIとの連携検証</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+           Development Log
+      ========================== -->
+      <section class="development-log-section" id="development-log">
         <div class="section-header">
-            <h2>AI開発支援UI：GPTコードをファイルに自動反映</h2>
+          <h2 class="section-title">Development Log</h2>
+          <p class="section-subtitle">AI時代の現場設計記録</p>
         </div>
 
-        <div class="ai-ui-wrap" style="display: flex; flex-direction: column; gap: 24px;">
-            <div class="ai-ui-row" style="display: flex; align-items: flex-start; gap: 24px;">
-                <div class="ai-ui-images" style="max-width: 520px; flex: 0 0 auto;">
-                    <div class="ai-ui-image-card" style="width: 100%; max-width: 560px;">
-                    <h3 style="font-size: 26px; margin: 0 0 10px;">更新UI（バックアップ＋上書き結果の表示）</h3>
-                    <img src="image/cordhenko.png" alt="コード変更UI" style="width: 100%; max-width: 560px; height: auto; display: block; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); margin: 0 auto;">
-                </div>
-                </div>
-                <div class="ai-ui-text" style="flex: 1 1 420px; min-width: 300px;">
-                <p>「作る」だけでなく「壊さずに運用する」ための、更新フローをUI化しています。GPTの出力をそのままローカルファイルへ反映する前に、バックアップ＋安全な上書きをセットで行い、「更新が怖い」を減らします。</p>
+        <div class="about-layout">
+          <div class="about-text">
+            <p>
+              この数カ月、AI入力支援UIを作るために、ChatGPTとの作業ログを整理しながら、
+              プロンプト作成・コード保存・バックアップ・復元・確認フローを少しずつ仕組みにしてきました。
+            </p>
 
-                <ul>
-                    <li>全文差し替え（丸ごと更新）</li>
-                    <li>セクション差し替え（START/END間だけ更新）</li>
-                    <li>バックアップ＋連番で安全に上書き（更新事故を最小化）</li>
-                </ul>
+            <p>
+              実際の運用では、チャットが重くなる、コピーや貼り付けが崩れる、
+              どこで何を変更したか分からなくなる、元に戻せない不安が出るなど、
+              AIを現場で使うための課題が見えてきました。
+            </p>
 
-                <p>指示プロンプト作成シートは、依頼の型を固定してAI出力のブレを抑え、レビューしやすくします。</p>
-                <ul>
-                    <li>目的/対象/現状/変更後/素材/確認 を1シートに整理</li>
-                    <li>対象ファイル選択の導線（index.html / AI.html など）</li>
-                    <li>貼り付け後の確認ポイントまで一気通貫</li>
-                </ul>
+            <p>
+              その経験から、単にAIにコードを書かせるのではなく、
+              設計・保存・復元・記録・再利用までを含めた
+              「AIを現場で安全に使うための仕組み」として整理しています。
+            </p>
 
-                <h4 style="margin-top: 18px;">今後の拡張（検討中）</h4>
-                <ul>
-                    <li>GPTs Actions 経由の直接書き出し：ローカルAPIやクラウドストレージAPI連携で「保存→Excelボタン」工程まで統合</li>
-                    <li>diff（差分）確認の自動化：更新前後の差分をテキスト出力し、「何が変わったか」を後から高速に検証</li>
-                </ul>
+            <p>
+              経験 → 困ったこと → 毎回お願いすること → プロンプト化 → ボタン化 → AI支援UIへ組み込み。
+              この流れを、現場改善の暗黙知データベースとして育てています。
+            </p>
+
+            <p>
+              私にとってこのツールは、短期の現場で、限られた時間の中から業務の詰まりを見つけ、
+              Excel・Access・VBAで現場が回る仕組みに変えてきた経験の総決算のようなものです。
+            </p>
+          </div>
+
+          <aside class="about-side" aria-label="Development focus">
+            <div class="about-card">
+              <h3>POINT</h3>
+              <ul>
+                <li>プロンプト依頼文の蓄積</li>
+                <li>コード保存・読込・確認</li>
+                <li>バックアップと復元</li>
+                <li>作業ログと引継ぎ</li>
+                <li>AI活用の安全運用設計</li>
+              </ul>
+              <p class="about-note">
+                暗黙知を、設計に落とすことを大切にしています。
+              </p>
             </div>
-            </div>
-
-            <div class="ai-ui-row" style="display: flex; align-items: flex-start; gap: 24px;">
-                <div class="ai-ui-images" style="max-width: 520px; flex: 0 0 auto;">
-                    <div class="ai-ui-image-card" style="width: 100%; max-width: 560px;">
-                    <h3 style="font-size: 26px; margin: 0 0 10px;">指示プロンプト作成シート（目的→対象→現状→変更後→素材→確認）</h3>
-                    <img src="image/pronptsakusei.png" alt="指示プロンプト作成シート" style="width: 100%; max-width: 560px; height: auto; display: block; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); margin: 0 auto;">
-                </div>
-                </div>
-                <div class="ai-ui-side" style="flex: 1; min-width: 260px; display: flex; justify-content: center; align-items: flex-start;">
-                    <div class="ai-ui-image-card" style="width: 100%; max-width: 320px;">
-                    <h3 style="font-size: 26px; margin: 0 0 10px;">YouTube（操作手順の配信）</h3>
-                    <img src="image/youtube.png" alt="YouTube" style="width: 60%; max-width: 320px; height: auto; display: block; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); margin: 0 auto;">
-                </div>
-                </div>
-            </div>
+          </aside>
         </div>
-    </div>
-</section>
+      </section>
 
       <!-- =========================
            About
       ========================== -->
-<!-- About -->
-<section class="about-section" id="about">
-  <div class="section-header">
-    <h2 class="section-title">About AbeLab</h2>
-    <p class="section-subtitle">現場で使える“止まらない”仕組みを、わかりやすく。</p>
-  </div>
+      <section class="about-section" id="about">
+        <div class="section-header">
+          <h2 class="section-title">About AbeLab</h2>
+          <p class="section-subtitle">現場で使える“止まらない”仕組みを、わかりやすく。</p>
+        </div>
 
-  <div class="about-layout">
-    <!-- text (left / wide) -->
-<div class="about-text">
- <p>
-  AbeLab は、既存システムと連携しながら、Excel／Access／VBA／RPA（Power Automate）などを組み合わせて、
-  「入力を減らす」「ミスを減らす」「止まらない」業務フローをつくります。
-</p>
+        <div class="about-layout">
+          <div class="about-text">
+            <p>
+              AbeLab は、既存システムと連携しながら、Excel／Access／VBA／RPA（Power Automate Desktop）／AIなどを組み合わせて、
+              「入力を減らす」「ミスを減らす」「止まらない」業務フローをつくります。
+            </p>
 
-  <p>
-    まず“人がやっている手順”を尊重し、壊さずに改善します。
-    その上で、ログ・検証・例外処理まで含めて、翌月も回る仕組みへ整えます。
-  </p>
+            <p>
+              まず“人がやっている手順”を尊重し、壊さずに改善します。
+              その上で、ログ・検証・例外処理まで含めて、翌月も回る仕組みへ整えます。
+            </p>
 
-  <!-- ★追加：2行ぶん（FOCUSの底辺合わせ用） -->
-  <p>
-    小さく始めて、現場に合わせて育てます。<br>
-    “作って終わり”ではなく、運用が続く形に仕上げます。
-  </p>
-</div>
+            <p>
+              小さく始めて、現場に合わせて育てます。<br>
+              “作って終わり”ではなく、運用が続く形に仕上げます。
+            </p>
+          </div>
 
-
-    <!-- focus (right) -->
-    <aside class="about-side" aria-label="AbeLab focus">
-      <div class="about-card">
-        <h3>FOCUS</h3>
-        <ul>
-          <li>Excel / Access / VBA の業務改善</li>
-          <li>RPA（Power Automate）連携</li>
-          <li>ログ・検証で“止まらない”運用</li>
-        </ul>
-        <p class="about-note">現場の負担を減らし、再現性を高める設計を大切にしています。</p>
-      </div>
-    </aside>
-  </div>
-</section>
+          <aside class="about-side" aria-label="AbeLab focus">
+            <div class="about-card">
+              <h3>FOCUS</h3>
+              <ul>
+                <li>Excel / Access / VBA の業務改善</li>
+                <li>Power Automate Desktop 連携</li>
+                <li>AI活用・プロンプト整理</li>
+                <li>ログ・検証で“止まらない”運用</li>
+              </ul>
+              <p class="about-note">
+                現場の負担を減らし、再現性を高める設計を大切にしています。
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
 
       <!-- =========================
            Contact
@@ -275,13 +390,10 @@
         </div>
 
         <div class="contact-content">
-          <p>
-            
-          </p>
           <ul class="contact-links">
             <li>LinkedIn: www.linkedin.com/in/yokoabe-lab</li>
-            <li>googleｻｲﾄﾎﾟｰﾄﾌｫﾘｵ：https://sites.google.com/view/yokoabe-portfolio2/%E3%83%9B%E3%83%BC%E3%83%A0</li>
-            <li>Email:yo3870ko0206@gmil.com</li>
+            <li>Googleサイト ポートフォリオ: https://sites.google.com/view/yokoabe-portfolio2/%E3%83%9B%E3%83%BC%E3%83%A0</li>
+            <li>Email: yo3870ko0206@gmail.com</li>
           </ul>
           <p class="contact-note">※公開用に整える段階で、記載情報を整理していきます。</p>
         </div>
@@ -345,9 +457,6 @@
 
     // ============================
     // 3) Projects 詳細表示
-    //    - 1) BucketBlocks
-    //    - 2) 請求書（デモ動画埋め込み）
-    //    - 3) PDFテキスト化は別ページへ（カード内リンク）
     // ============================
     (function () {
       const panel = document.getElementById('projectDetailPanel');
@@ -369,6 +478,7 @@
               <li>用途：汎用マスタ／履歴／メモなど、項目が増えがちなデータを“追加型”で管理</li>
               <li>特徴：テキスト・数値・日付などをブロックとして後付けできる</li>
               <li>狙い：システム化の前段で、現場の情報を散らさず貯める</li>
+              <li>考え方：最初から大きなシステムにせず、現場で育てられる形にする</li>
             </ul>
           `.trim()
         }
